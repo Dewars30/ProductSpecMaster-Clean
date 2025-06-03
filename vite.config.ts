@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default defineConfig({
-  root: '.', // Explicitly set root to current dir (client/)
+  root: './client', // Explicitly set root to client directory
   build: {
     outDir: '../dist/client', // Output relative to client/ dir
     emptyOutDir: true,
