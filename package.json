@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "dev": "NODE_ENV=development tsx server/index.ts",
-    "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "build": "npm run build:client && npm run build:server",
     "check": "tsc --noEmit",
     "typecheck": "tsc --noEmit",
     "lint": "eslint --ext .ts,.tsx ./server ./client ./shared",
@@ -28,6 +28,8 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:all": "./scripts/run-tests.sh",
+    "build:client": "vite build --outDir dist/client",
+    "build:server": "esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist/server",
     "start": "NODE_ENV=production node dist/index.js",
     "db:push": "drizzle-kit push",
     "prepare": "husky"
@@ -100,7 +102,7 @@
     "vaul": "^1.1.2",
     "wouter": "^3.3.5",
     "ws": "^8.18.0",
-    "zod": "^3.24.2",
+    "zod": "^3.23.8",
     "zod-validation-error": "^3.4.0"
   },
   "devDependencies": {
