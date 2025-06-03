@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%; /* #ffffff */
+  --foreground: 240 10% 3.9%; /* #020817 */
+  --muted: 210 40% 98%; /* #f1f5f9 */
+  --muted-foreground: 215.4 16.3% 46.9%; /* #64748b */
+  --popover: 0 0% 100%; /* #ffffff */
+  --popover-foreground: 240 10% 3.9%; /* #020817 */
+  --card: 0 0% 100%; /* #ffffff */
+  --card-foreground: 240 10% 3.9%; /* #020817 */
+  --border: 214.3 31.8% 91.4%; /* #e2e8f0 */
+  --input: 214.3 31.8% 91.4%; /* #e2e8f0 */
+  --primary: 221.2 83.2% 53.3%; /* #3b82f6 */
+  --primary-foreground: 210 40% 98%; /* #f1f5f9 */
+  --secondary: 210 40% 96%; /* #f8fafc */
+  --secondary-foreground: 222.2 84% 4.9%; /* #0f172a */
+  --accent: 210 40% 96%; /* #f8fafc */
+  --accent-foreground: 222.2 84% 4.9%; /* #0f172a */
+  --destructive: 0 84.2% 60.2%; /* #ef4444 */
+  --destructive-foreground: 210 40% 98%; /* #f1f5f9 */
+  --ring: 221.2 83.2% 53.3%; /* #3b82f6 */
+  --radius: 0.5rem;
+  --sidebar-background: 0 0% 98%; /* #fafafa */
+  --sidebar-foreground: 240 5.3% 26.1%; /* #374151 */
+  --sidebar-primary: 240 5.9% 10%; /* #1f2937 */
+  --sidebar-primary-foreground: 0 0% 98%; /* #fafafa */
+  --sidebar-accent: 240 4.8% 95.9%; /* #f9fafb */
+  --sidebar-accent-foreground: 240 5.9% 10%; /* #1f2937 */
+  --sidebar-border: 220 13% 91%; /* #e5e7eb */
+  --sidebar-ring: 217.2 91.2% 59.8%; /* #3b82f6 */
+  --chart-1: 12 76% 61%; /* #e88c2d */
+  --chart-2: 173 58% 39%; /* #3b9669 */
+  --chart-3: 197 37% 24%; /* #1e3a8a */
+  --chart-4: 43 74% 66%; /* #eab308 */
+  --chart-5: 27 87% 67%; /* #f97316 */
+}
+
+.dark {
+  --background: 240 10% 3.9%; /* #020817 */
+  --foreground: 0 0% 98%; /* #fafafa */
+  --muted: 240 3.7% 15.9%; /* #1e293b */
+  --muted-foreground: 240 5% 64.9%; /* #64748b */
+  --popover: 240 10% 3.9%; /* #020817 */
+  --popover-foreground: 0 0% 98%; /* #fafafa */
+  --card: 240 10% 3.9%; /* #020817 */
+  --card-foreground: 0 0% 98%; /* #fafafa */
+  --border: 240 3.7% 15.9%; /* #1e293b */
+  --input: 240 3.7% 15.9%; /* #1e293b */
+  --primary: 221.2 83.2% 53.3%; /* #3b82f6 */
+  --primary-foreground: 210 40% 98%; /* #f1f5f9 */
+  --secondary: 240 3.7% 15.9%; /* #1e293b */
+  --secondary-foreground: 0 0% 98%; /* #fafafa */
+  --accent: 240 3.7% 15.9%; /* #1e293b */
+  --accent-foreground: 0 0% 98%; /* #fafafa */
+  --destructive: 0 62.8% 30.6%; /* #dc2626 */
+  --destructive-foreground: 0 0% 98%; /* #fafafa */
+  --ring: 240 4.9% 83.9%; /* #cbd5e1 */
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .typing-indicator::after {
+    content: '|';
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  .glass-effect {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  .document-content {
+    line-height: 1.8;
+    font-size: 16px;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* Smooth animations */
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* Focus styles */
+.focus-visible:focus-visible {
+  @apply ring-2 ring-ring ring-offset-2 ring-offset-background outline-none;
+}
+
+/* Type.ai inspired typography */
+.prose {
+  @apply text-gray-800 leading-relaxed;
+}
+
+.prose h1 {
+  @apply text-3xl font-bold text-gray-900 mb-6;
+}
+
+.prose h2 {
+  @apply text-2xl font-semibold text-gray-900 mt-8 mb-4;
+}
+
+.prose h3 {
+  @apply text-xl font-semibold text-gray-900 mt-6 mb-3;
+}
+
+.prose p {
+  @apply mb-4 text-gray-700;
+}
+
+.prose ul {
+  @apply list-disc list-inside mb-4 space-y-2;
+}
+
+.prose ol {
+  @apply list-decimal list-inside mb-4 space-y-2;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-blue-500 pl-4 italic text-gray-600 my-6;
+}
+
+.prose code {
+  @apply bg-gray-100 px-2 py-1 rounded text-sm font-mono;
+}
+
+.prose pre {
+  @apply bg-gray-100 p-4 rounded-lg overflow-x-auto;
+}

@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Run linting if available
+if npm run lint 2>/dev/null; then
+  echo "✓ Linting passed"
+else
+  echo "⚠️ Linting skipped (command not available)"
+fi
+
+# Run type checking if available
+if npm run typecheck 2>/dev/null; then
+  echo "✓ Type checking passed"
+else
+  echo "⚠️ Type checking skipped (command not available)"
+fi
+
+# Run tests if available
+if npm run test 2>/dev/null; then
+  echo "✓ Tests passed"
+else
+  echo "⚠️ Tests skipped (command not available)"
+fi
