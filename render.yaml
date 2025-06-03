@@ -3,7 +3,7 @@ services:
   - type: web
     name: productspecmaster-clean
     env: node
-    buildCommand: npm ci && npm run build
+    buildCommand: chmod +x ./build.sh && ./build.sh
     startCommand: npm run start
     healthCheckPath: /api/health
     envVars:
